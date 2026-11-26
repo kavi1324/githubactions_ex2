@@ -1,0 +1,21 @@
+# WORKFLOW 02 - Checkout code and list files (very basic)
+# Purpose: learn that the runner starts EMPTY - you must check out your repo.
+
+name: 02 Checkout And List Files
+
+on: [push, pull_request]        # Short form: trigger on push AND pull requests
+
+jobs:
+  list-files:
+    runs-on: ubuntu-latest
+    steps:
+      # "uses" runs a pre-built action instead of a shell command.
+      # actions/checkout downloads your repository into the runner.
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: List files in the repo
+        run: ls -la             # Shows the files that were checked out
+
+      - name: Show current folder
+        run: pwd                # Prints the working directory path
